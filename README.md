@@ -1,0 +1,2 @@
+# openstack_practice
+OpenStack企业级应用与实践
