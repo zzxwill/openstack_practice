@@ -1,14 +1,3 @@
-# Summary
-
-* 测试
-* [Chapter1]第一章
-  * [Section1.1]OpenStack简介
-  * [Section1.2]OpenStack组件
-* [Chapter2]第二章
-
-
-
-
 # 第一篇 基础背景篇
 * 第一章	OpenStack基础结构和组件
   * 1.1	OpenStack 基础结构介绍
