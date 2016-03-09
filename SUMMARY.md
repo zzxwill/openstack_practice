@@ -2,9 +2,8 @@
 
 * [前言](README.md)
 * [(基础背景篇)OpenStack基础结构和组件](introduction/README.md)
-   * [OpenStack 基础结构介绍](introduction/README.md)
    * [OpenStack基础组件](introduction/components.md)
-       * Nova
+       * [Nova](introduction/basic_components/nova.md)
        * Glance
        * KeyStone
    * OpenStack 可扩展基础设施型组件
