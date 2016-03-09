@@ -1,5 +1,5 @@
-* [第一篇 基础背景篇]
-* 第一章	OpenStack基础结构和组件
+* 基础背景篇
+* OpenStack基础结构和组件
   * OpenStack 基础结构介绍
   * OpenStack基础组件
     * Nova
@@ -10,17 +10,18 @@
     * 1.3.2	Neutron
     * 1.3.3	Cinder
     * 1.3.4	Designate和Ironic
-1.4	OpenStack可选增强型组件
-1.4.1	Ceilometer
-1.4.2	Horizon
-1.4.3	Babican
-1.5	OpenStack 消费服务型组件
-1.5.1	Trove
-1.5.2	Heat
-1.5.3	Sahara
-1.5.4	Macorni
-第二章	OpenStack部署
-2.1	DevStack
+  * 1.4	OpenStack可选增强型组件
+    * Ceilometer
+    * 1.4.2	Horizon
+    * 1.4.3	Babican
+    * 1.5	OpenStack 消费服务型组件
+      * 1.5.1	Trove
+      * 1.5.2	Heat
+      * 1.5.3	Sahara
+      * 1.5.4	Macorni
+      
+* OpenStack部署
+  * DevStack
 2.1.1	配置第一个本地OpenStack开发环境
 2.1.2	多节点部署
 2.1.3	结合Vagrant部署
