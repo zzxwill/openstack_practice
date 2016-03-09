@@ -1,6 +1,6 @@
 # Summary
 * [前言](README.md)
-* (基础背景篇)OpenStack基础结构和组件
+* [(基础背景篇)OpenStack基础结构和组件](introduction/README.md)
   * OpenStack 基础结构介绍
   * OpenStack基础组件
     * Nova
