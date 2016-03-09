@@ -11,8 +11,8 @@
 
 # 第一篇 基础背景篇
 * 第一章	OpenStack基础结构和组件
-    1.1	OpenStack 基础结构介绍
-    1.2	OpenStack基础组件
+  * 1.1	OpenStack 基础结构介绍
+  * 1.2	OpenStack基础组件
 1.2.1	Nova
 1.2.2	Glance
 1.2.3	KeyStone
