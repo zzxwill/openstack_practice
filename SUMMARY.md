@@ -4,7 +4,7 @@
 * [(基础背景篇)OpenStack基础结构和组件](introduction/README.md)
    * [OpenStack基础组件](introduction/components.md)
        * [Nova](introduction/basic_components/nova.md)
-       * [Glance](introduction/glance.md)
+       * [Glance](introduction/basic_components/glancemd.md)
        * KeyStone
    * OpenStack 可扩展基础设施型组件
        * Swift
