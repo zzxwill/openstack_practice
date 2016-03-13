@@ -1,12 +1,12 @@
 # Summary
 
 * [前言](README.md)
-* [(基础背景篇)OpenStack基础结构和组件](introduction/README.md)
+* [（基础背景篇）OpenStack基础结构和组件](introduction/README.md)
    * [OpenStack基础组件](introduction/components.md)
        * [Nova](introduction/basic_components/nova.md)
        * [Glance](introduction/basic_components/glance.md)
        * KeyStone
-   * OpenStack 可扩展基础设施型组件
+   * OpenStack可扩展基础设施型组件
        * Swift
        * Neutron
        * Cinder
@@ -20,7 +20,7 @@
            * 1.5.2    Heat
            * 1.5.3    Sahara
            * 1.5.4    Macorni
-* OpenStack部署
+* （基础背景篇）OpenStack部署
   * DevStack
     * 配置第一个本地OpenStack开发环境
     * 多节点部署
@@ -33,7 +33,7 @@
   * Request
   * Oslo.conf
   * gevent/greenlet/eventlet
-* OpenStack企业级应用开发
+* （基础背景篇）OpenStack企业级应用开发
   * Nova开发
     * 扩展Nova API
     * Instance快照
@@ -50,10 +50,10 @@
   * Horizon开发
   * Ceilometer开发
   * Heat开发
-* (高级篇)关系型数据库
+* （高级篇）关系型数据库
   * MySQL
   * Redis
-* 网络和存储解决方案
+* （高级篇）网络和存储解决方案
   * 网络布线
   * 网段规划
   * 网络吞吐和时延
@@ -61,11 +61,11 @@
     * Ceph
     * NAS
     * SAN 
-* 服务高可用
+* （高级篇）服务高可用
   * 控制节点HA
   * 数据库Master/Master和Master/Slave
   * 服务单点热点
-* OpenStack其他应用实践与难点
+* （高级篇）OpenStack其他应用实践与难点
   * 负载均衡
     * 硬件
     * 软件
