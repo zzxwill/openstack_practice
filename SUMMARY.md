@@ -28,28 +28,28 @@
   * RPM/RDO部署
   * 通过定制关盘和脚本脚本
   * 利用Ansible部署
-第三章	企业级开发中的第三方Python库
-3.1	SQLAlchemy
-3.2	Request
-3.3	Oslo.conf
-3.4	gevent/greenlet/eventlet
-第四章	OpenStack企业级应用开发
-4.1	Nova开发
-4.1.1	扩展Nova API
-4.1.2	Instance快照
-4.1.3	Nova Scheduler
-4.1.4	Libvirt开发
-4.1.4.1	CGroup
-4.1.4.2	Python-libevirt和KVM
-4.1.5	VMware驱动开发
-4.2	Keystone开发
-4.3	Neutron开发
-4.4	Swift开发
-4.5	BillBoard开发
-4.6	Ceph开发
-4.7	Horizon开发
-4.8	Ceilometer开发
-4.9	Heat开发
+* 企业级开发中的第三方Python库
+  * SQLAlchemy
+  * Request
+  * Oslo.conf
+  * gevent/greenlet/eventlet
+* OpenStack企业级应用开发
+  * Nova开发
+    * 扩展Nova API
+    * Instance快照
+    * Nova Scheduler
+    * Libvirt开发
+      * CGroup
+      * Python-libevirt和KVM
+    * VMware驱动开发
+  * Keystone开发
+  * Neutron开发
+  * Swift开发
+  * BillBoard开发
+  * Ceph开发
+  * Horizon开发
+  * Ceilometer开发
+  * Heat开发
 第二篇 高级篇
 第五章	关系型数据库
 5.1	MySQL
