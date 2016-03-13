@@ -50,10 +50,9 @@
   * Horizon开发
   * Ceilometer开发
   * Heat开发
-第二篇 高级篇
-第五章	关系型数据库
-5.1	MySQL
-5.2	Redis
+* (高级篇)关系型数据库
+  * MySQL
+  * Redis
 第六章	网络和存储解决方案
 6.1	网络布线
 6.2	网段规划
