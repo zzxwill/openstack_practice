@@ -2,6 +2,7 @@
 
 * [前言](README.md)
 * [（基础背景篇）OpenStack基础结构和组件](introduction/README.md)
+   * [OpenStack概述](introduction/openstack_brief.md)
    * [OpenStack基础组件](introduction/components.md)
        * [Nova](introduction/basic_components/nova.md)
        * [Glance](introduction/basic_components/glance.md)
@@ -20,7 +21,7 @@
            * 1.5.2    Heat
            * 1.5.3    Sahara
            * 1.5.4    Macorni
-   * [OpenStack概述](introduction/openstack_brief.md)
+
 * （基础背景篇）OpenStack部署
    * DevStack
        * 配置第一个本地OpenStack开发环境
