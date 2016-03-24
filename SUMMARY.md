@@ -20,7 +20,7 @@
            * 1.5.2    Heat
            * 1.5.3    Sahara
            * 1.5.4    Macorni
-   * OpenStack概述
+   * [OpenStack概述](introduction/openstack_brief.md)
 * （基础背景篇）OpenStack部署
    * DevStack
        * 配置第一个本地OpenStack开发环境
