@@ -21,13 +21,12 @@
            * 1.5.2    Heat
            * 1.5.3    Sahara
            * 1.5.4    Macorni
-
 * （基础背景篇）OpenStack部署
    * DevStack
        * 配置第一个本地OpenStack开发环境
        * 多节点部署
        * 结合Vagrant部署
-   * RPM/RDO部署
+   * [RPM/RDO部署](deployment/rpm_rdo.md)
    * 通过定制关盘和脚本脚本
    * 利用Ansible部署
 * 企业级开发中的第三方Python库
