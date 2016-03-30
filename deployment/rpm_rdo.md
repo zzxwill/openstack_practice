@@ -3,6 +3,10 @@ RDO部署
 安装环境
 cat /etc/redhat-release
 CentOS Linux release 7.2.1511 (Core)
+IP: 115.182.107.175
+CPU: 16核
+内存：64GB
+
 
 根据官方的说法，RDO指两件事，第一是指运行在Red Hat Enterprise Linux, CentOS, Fedora和他们的发行版上的可以免费使用并且有社区支持的OpenStack版本。它也是指一个社区，该社区的用户在Red Hat Linux操作系统上运行OpenStack，并且互相提供帮助和协作。
 RDO是RPM Distribution of OpenStack的缩写。
@@ -37,7 +41,21 @@ $ packstack --allinone
 
 如果安装出现问题，请根据两位作者的联系方式寻求帮助。
 
+安装成功后，会生成文件/root/keystonerc_admin。
+通过[http://115.182.107.175/dashboard](http://115.182.107.175/dashboard)，和keystonerc_admin里的OS_USERNAME和OS_PASSWORD，可以登陆Horizon界面。
+```unset OS_SERVICE_TOKEN
+export OS_USERNAME=admin
+export OS_PASSWORD=abc123xyz
+export OS_AUTH_URL=http://115.182.107.175:5000/v2.0
+export PS1='[\u@\h \W(keystone_admin)]\$ '
 
+export OS_TENANT_NAME=admin
+export OS_REGION_NAME=RegionOne```
+
+![](QQ20160330-0@2x.png)
+
+登陆之后的界面如下图所示。
+![](QQ20160330-1@2x.png)
 
 参考：
 [https://www.rdoproject.org/](https://www.rdoproject.org/)
