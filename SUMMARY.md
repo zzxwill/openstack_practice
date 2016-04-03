@@ -74,7 +74,7 @@
    * 业务迁移
    * 资源弹性扩展
        * Heat4CloudProviders
-       * Senlin
+       * [Senlin](practice_and_difficulties/senlin.md)
    * 定制化付费
    * 报警与处理故障
 * （实例篇）某IDC公有云架构
