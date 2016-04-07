@@ -87,7 +87,7 @@ $ sudo pip install -e .
   $ senlin-api --config-file /etc/senlin/senlin.conf
 ```
 安装Senlin Client
----------------------
+----------------
 
 1. 获取Senlin Client源码
 ```
@@ -100,7 +100,7 @@ $ sudo pip install -e .
   $ sudo python setup.py install
 ```
 安装验证
-------------------------
+------
 ```
   $ openstack cluster build info
   +----------+---------------------+
