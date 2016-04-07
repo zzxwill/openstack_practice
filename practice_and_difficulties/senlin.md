@@ -13,12 +13,10 @@ Senlin is designed to be capable of managing different types of objects. An obje
 ---------
 
 1. 获取Senlin源代码
-
-::
-
-  $ cd /opt/stack
-  $ git clone http://git.openstack.org/openstack/senlin.git
-
+```
+$ cd /opt/stack
+$ git clone http://git.openstack.org/openstack/senlin.git
+```
 2. 安装Senlin的依赖包
 
 ::
