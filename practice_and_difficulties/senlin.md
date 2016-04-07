@@ -9,98 +9,127 @@ Senlin is designed to be capable of managing different types of objects. An obje
 
 
 
-* Install Senlin Server¶
-1. Get Senlin source code from OpenStack git repository.
-$ cd /opt/stack
-$ git clone http://git.openstack.org/openstack/senlin.git
-Install Senlin with required packages.
-$ cd /opt/stack/senlin
-$ sudo pip install -e .
-Register Senlin clustering service with keystone.
+安装Senlin Server
+---------
 
-This can be done using the setup-service script under the tools folder.
+1. 获取Senlin源代码
 
-$ source ~/devstack/openrc admin
-$ cd /opt/stack/senlin/tools
-$ ./setup-service <HOST IP> <SERVICE_PASSWORD>
-![](QQ20160406-0.png)
-
-
-
-
-
-1. Generate configuration file for the Senlin service.
-$ cd /opt/stack/senlin
-$ tools/gen-config
-$ sudo mkdir /etc/senlin
-$ sudo cp etc/senlin/api-paste.ini /etc/senlin
-$ sudo cp etc/senlin/policy.json /etc/senlin
-$ sudo cp etc/senlin/senlin.conf.sample /etc/senlin/senlin.conf
-Edit file /etc/senlin/senlin.conf according to your system settings. The most common options to be customized include:
-
-1. 创建senlin数据库和用户senlin
 ::
 
- MariaDB [(none)]> create database senlin
- MariaDB [senlin]> grant all on senlin.* to 'senlin'@'%';
- MariaDB [senlin]> flush privileges;
+  $ cd /opt/stack
+  $ git clone http://git.openstack.org/openstack/senlin.git
+
+2. 安装Senlin的依赖包
+
+::
+
+  $ cd /opt/stack/senlin
+  $ sudo pip install -e .
+
+3. 将Senlin clustering service注册到keystone
+::
+
+  $ source ~/devstack/openrc admin
+  $ cd /opt/stack/senlin/tools
+  $ ./setup-service <HOST IP> <SERVICE_PASSWORD>
+<SERVICE_PASSWORD>是senlin作为project service的user senlin的密码
+![](QQ20160406-0.png)
+4. 生成Senlin service需要的配置文件
+::
+
+  $ cd /opt/stack/senlin
+  $ tools/gen-config
+  $ sudo mkdir /etc/senlin
+  $ sudo cp etc/senlin/api-paste.ini /etc/senlin
+  $ sudo cp etc/senlin/policy.json /etc/senlin
+  $ sudo cp etc/senlin/senlin.conf.sample /etc/senlin/senlin.conf
+
+根据系统设置编辑/etc/senlin/senlin.conf，主要参考/root/keystonerc_admin和/etc/keystone/keystone.conf。
+
+::
+
+  [database]
+  connection = mysql://senlin:<MYSQL_SENLIN_PW>@127.0.0.1/senlin?charset=utf8
+
+  [keystone_authtoken]
+  auth_uri = http://<HOST>:5000/v3
+  auth_version = 3
+  cafile = /opt/stack/data/ca-bundle.pem
+  identity_uri = http://<HOST>:35357
+  admin_user = senlin
+  admin_password = <SENLIN PASSWORD>
+  admin_tenant_name = service
+
+  [authentication]
+  auth_url = http://<HOST>:5000/v3
+  service_username = senlin
+  service_password = <SENLIN PASSWORD>
+  service_project_name = service
+
+  [oslo_messaging_rabbit]
+  rabbit_userid = <RABBIT USER ID>
+  rabbit_hosts = <HOST>
+  rabbit_password = <RABBIT PASSWORD>
+  
+为了配置上述conf文件，需要
+* 创建数据库senlin的用户senlin
+：：
+    create user 'senlin'@'%' identified by 'passw0rd';
+    grant all on senlin.* to 'senlin'@'%';
+    flush privileges;
+* 
 
 
 
+5. 创建数据库Senlin
+::
 
+  $ cd /opt/stack/senlin/tools
+  $ ./senlin-db-recreate
 
-[database]
-connection = mysql://senlin:<MYSQL_SENLIN_PW>@127.0.0.1/senlin?charset=utf8
+6. 启动senlinengine和api服务
+需要两个终端，分别运行下面的服务启动命令
+::
 
-[keystone_authtoken]
-auth_uri = http://<HOST>:5000/v3
-auth_version = 3
-cafile = /opt/stack/data/ca-bundle.pem
-identity_uri = http://<HOST>:35357
-admin_user = senlin
-admin_password = <SENLIN PASSWORD>
-admin_tenant_name = service
+  $ senlin-engine --config-file /etc/senlin/senlin.conf
+  $ senlin-api --config-file /etc/senlin/senlin.conf
 
-[authentication]
-auth_url = http://<HOST>:5000/v3
-service_username = senlin
-service_password = <SENLIN PASSWORD>
-service_project_name = service
+安装Senlin Client
+---------------------
 
-[oslo_messaging_rabbit]
-rabbit_userid = <RABBIT USER ID>
-rabbit_hosts = <HOST>
-rabbit_password = <RABBIT PASSWORD>
-Create Senlin Database.
-Create Senlin database using the senlin-db-recreate script under the tools subdirectory. Before calling the script, you need edit it to customize the password you will use for the senlin user. You need to update this script with the <DB PASSWORD> entered in step4.
-$ cd /opt/stack/senlin/tools
-$ ./senlin-db-recreate
-Start senlin engine and api service.
-You may need two consoles for the services i.e., one for each service.
-$ senlin-engine --config-file /etc/senlin/senlin.conf
-$ senlin-api --config-file /etc/senlin/senlin.conf
-Install Senlin Client¶
-Get Senlin client code from OpenStack git repository.
-$ cd /opt/stack
-$ git clone http://git.openstack.org/openstack/python-senlinclient.git
-Install senlin client.
-$ cd python-senlinclient
-$ sudo python setup.py install
-Verify Your Installation¶
-To check whether Senlin server and Senlin client have been installed successfully, run command openstack cluster build info in a console. The installation is successful if the command output looks similar to the following.
+1. 获取Senlin Client源码
 
-$ openstack cluster build info
-+----------+---------------------+
-| Property | Value               |
-+----------+---------------------+
-| api      | {                   |
-|          |   "revision": "1.0" |
-|          | }                   |
-| engine   | {                   |
-|          |   "revision": "1.0" |
-|          | }                   |
-+----------+---------------------+
+::
+
+  $ cd /opt/stack
+  $ git clone http://git.openstack.org/openstack/python-senlinclient.git
+
+2. 安装senlin client
+
+::
+
+  $ cd python-senlinclient
+  $ sudo python setup.py install
+
+安装验证
+------------------------
+
+::
+
+  $ openstack cluster build info
+  +----------+---------------------+
+  | Property | Value               |
+  +----------+---------------------+
+  | api      | {                   |
+  |          |   "revision": "1.0" |
+  |          | }                   |
+  | engine   | {                   |
+  |          |   "revision": "1.0" |
+  |          | }                   |
+  +----------+---------------------+
+
 You are ready to begin your journey (aka. adventure) with Senlin, now.
+
 
 
 
