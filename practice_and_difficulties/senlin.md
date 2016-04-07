@@ -39,7 +39,7 @@ $ sudo pip install -e .
   $ sudo cp etc/senlin/policy.json /etc/senlin
   $ sudo cp etc/senlin/senlin.conf.sample /etc/senlin/senlin.conf
 ```
-根据系统设置编辑/etc/senlin/senlin.conf，主要参考/root/keystonerc_admin和/etc/keystone/keystone.conf。
+根据系统设置编辑/etc/senlin/senlin.conf，主要参考 /root/keystonerc_admin和 /etc/keystone/keystone.conf。
 ```
   [database]
   connection = mysql://senlin:<MYSQL_SENLIN_PW>@127.0.0.1/senlin?charset=utf8
