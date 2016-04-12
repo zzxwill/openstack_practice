@@ -14,7 +14,7 @@
        * Designate和Ironic
    * 1.4    OpenStack可选增强型组件
        * Ceilometer
-       * 1.4.2    Horizon
+       * [1.4.2    Horizon](optional_enhanced_components/horizon.md)
        * 1.4.3    Babican
        * 1.5    OpenStack 消费服务型组件
            * 1.5.1    Trove
