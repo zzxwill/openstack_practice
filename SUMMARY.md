@@ -28,7 +28,7 @@
        * 结合Vagrant部署
    * [RPM/RDO部署](deployment/rpm_rdo.md)
    * 通过定制关盘和脚本脚本
-       * 准备RPM源
+       * [准备RPM源](deployment/RPM_repos.md)
    * 利用Ansible部署
 * 企业级开发中的第三方Python库
    * SQLAlchemy
