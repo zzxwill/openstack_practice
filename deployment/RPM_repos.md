@@ -14,17 +14,17 @@
 
 
 
-为了方便，打包服务器和Git源代码托管服务器在同一个服务器git.zhouzhengxi.com上。
+为了方便，打包服务器和Git源代码托管服务器在同一个服务器git.zhouzhengxi.com上。以打包Horzion为例。
 
 * 获取源代码并压缩为tar.gz包
   * 准备文件sourcerepo.list
-
-> 1 #/var/opt/gitlab/git-data/repositories/dev/nova.git
+```
+1 #/var/opt/gitlab/git-data/repositories/dev/nova.git
 2 #/var/opt/gitlab/git-data/repositories/dev/trove.git
 3 #/var/opt/gitlab/git-data/repositories/dev/ceilometer.git
 4 #/var/opt/gitlab/git-data/repositories/dev/glance.git
 5 #/var/opt/gitlab/git-data/repositories/dev/keystone.git
-8 #/var/opt/gitlab/git-data/repositories/dev/horizon.git
+8 /var/opt/gitlab/git-data/repositories/dev/horizon.git
 9 #/var/opt/gitlab/git-data/repositories/dev/cinder.git
 10 #/var/opt/gitlab/git-data/repositories/dev/documents.git
 11 #/var/opt/gitlab/git-data/repositories/dev/neutron.git
@@ -36,5 +36,5 @@
 18 #/var/opt/gitlab/git-data/repositories/dev/python-cinderclient.git
 19 #/var/opt/gitlab/git-data/repositories/dev/python-novaclient.git
 20 #/var/opt/gitlab/git-data/repositories/dev/python-neutronclient.git
-
-
+```
+第8行horizon的git位置处于生效状态。
