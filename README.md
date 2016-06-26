@@ -7,7 +7,7 @@ OpenStack企业级应用与实践
 
 这里不谈Amazon和VMware，第八章会分别将其与OpenStack做比较。
 
-OpenStack是这样给自己定义的:”OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface.” 
+OpenStack是这样给自己定义的:“OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface.” 
 
 OpenStack生态圈是Amazon云计算生态系统最有力的开源竞争者。OpenStack自2010年开源以来，6年中迭代13个版本，20多个衍生项目，100多个国家地区，上万名开发者持续参与、贡献、投入。
 
