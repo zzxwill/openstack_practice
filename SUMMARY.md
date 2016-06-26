@@ -120,4 +120,5 @@
        * systemtap
    * OpenStack和Docker
    * OpenStack升级
+       * Horizon从Juno到Mitaka升级实践
 
