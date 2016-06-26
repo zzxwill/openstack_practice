@@ -120,5 +120,5 @@
        * systemtap
    * OpenStack和Docker
    * OpenStack升级
-       * [Horizon从Juno到Mitaka升级实践](upgrade_horizon_from_juno_to_mitaka.md)
+       * [Horizon从Juno到Mitaka升级实践](extension/openstack_upgration/upgrade_horizon_from_juno_to_mitaka.md)
 
