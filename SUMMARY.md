@@ -67,7 +67,7 @@
     * 控制节点HA
     * 数据库Master\/Master和Master\/Slave
     * 服务单点热点
-* （高级篇）OpenStack其他应用实践与难点
+* [（高级篇）OpenStack其他应用实践与难点](（高级篇）openstack其他应用实践与难点.md)
     * 负载均衡
         * 硬件
         * 软件
