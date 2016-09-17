@@ -32,8 +32,8 @@
     * 利用Ansible部署
 * 企业级开发中的第三方Python库
     * [SQLAlchemy](sqlalchemy.md)
-    * Request
-    * Oslo.conf
+    * [Requests](request.md)
+    * [Oslo.conf](osloconf.md)
     * gevent\/greenlet\/eventlet
 * （基础背景篇）OpenStack企业级应用开发
     * Nova开发
