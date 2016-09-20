@@ -32,16 +32,16 @@
     * 利用Ansible部署
 * 企业级开发中的第三方Python库
     * [SQLAlchemy](sqlalchemy.md)
-    * [Requests](request.md)
+    * [Requests](3rd_lib/request.md)
     * [Oslo.conf](osloconf.md)
     * gevent\/greenlet\/eventlet
 * （基础背景篇）OpenStack企业级应用开发
     * Nova开发
-        * 扩展Nova API
-        * Instance快照
-        * Nova Scheduler
+        * [扩展Nova API](扩展nova-api.md)
+        * [Instance快照](instance快照.md)
+        * [Nova Scheduler](nova-scheduler.md)
         * Libvirt开发
-            * CGroup
+            * [CGroup](cgroup.md)
             * Python-libevirt和KVM
         * VMware驱动开发
     * Keystone开发
