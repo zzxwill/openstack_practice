@@ -2,9 +2,7 @@
 
 Heat resource是什么？通过命令“heat resource-type-list”，我们可以略窥一二。
 
-
-
-橙色部分是Heat自带的一些resource type，红色部分是我们自己开发的resource type（如果开发工作还没开始，则不会显示）。更准确的说，Heat resource type是以XXX::YYY::ZZZ标志的，一个继承了heat.engine.resource.Resource的Python类，该类可以扩展加强Heat本身的服务。
+![](/assets/6871F945-B4CC-4D98-8EC5-04F98F232824.png)橙色部分是Heat自带的一些resource type，红色部分是我们自己开发的resource type（如果开发工作还没开始，则不会显示）。更准确的说，Heat resource type是以XXX::YYY::ZZZ标志的，一个继承了heat.engine.resource.Resource的Python类，该类可以扩展加强Heat本身的服务。
 
 下面以[https:\/\/github.com\/zzxwill\/Heat4CloudProviders\/blob\/master\/qingcloud\_heat\_plugin\/resources\/server.py](https://github.com/zzxwill/Heat4CloudProviders/blob/master/qingcloud_heat_plugin/resources/server.py)为例，说明resource type COM::TwoFellows::Server。该resource type用来创建、更新、删除一个虚拟机。
 
