@@ -51,7 +51,7 @@
     * Ceph开发
     * Horizon开发
     * [Ceilometer开发](ceilometer开发.md)
-    * [Heat开发](heat开发.md)
+    * [Heat开发](development/heat开发.md)
 * （高级篇）关系型数据库
     * MySQL
     * Redis
