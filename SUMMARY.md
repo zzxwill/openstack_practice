@@ -44,14 +44,14 @@
             * [CGroup](cgroup.md)
             * Python-libevirt和KVM
         * VMware驱动开发
-    * Keystone开发
+    * [Keystone开发](keystone开发.md)
     * Neutron开发
     * Swift开发
     * BillBoard开发
     * Ceph开发
     * Horizon开发
     * Ceilometer开发
-    * Heat开发
+    * [Heat开发](heat开发.md)
 * （高级篇）关系型数据库
     * MySQL
     * Redis
