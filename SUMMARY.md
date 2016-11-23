@@ -48,8 +48,8 @@
     * Neutron开发
     * Swift开发
     * BillBoard开发
-    * Ceph开发
-    * Horizon开发
+    * [Ceph开发](ceph开发.md)
+    * [Horizon开发](horizon开发.md)
     * [Ceilometer开发](ceilometer开发.md)
     * [Heat开发](development/heat开发.md)
 * （高级篇）关系型数据库

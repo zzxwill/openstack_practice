@@ -1,12 +1,4 @@
-
-
-
-
 **HOT —— OpenStack Heat从入门到实践**
-
-
-
-
 
 HOT即Heat Orchestration Template，初学者可能会不大好理解Orchestration这个词，WikiPedia的解释比较贴切。
 
@@ -22,17 +14,11 @@ This usage of _orchestration_ is often discussed in the context of [virtualizati
 
 比如，你使用云主机时，需要将主机的内存从1G改到2G，一般是登录到云主机控制后台，更改主机配置中的内存。使用“编排”则是将模板中的内存属性从1改为2，然后自动化的去更改主机的内存大小。
 
-
-
 ![](/assets/change_size_of_instance)
 
 下面我们以一个实际的例子来学习HOT。
 
 [https:\/\/github.com\/zzxwill\/Heat4CloudProviders\/blob\/master\/qingcloud\_heat\_plugin\/template\/qingcloud\_single\_vm\_stack.yaml](https://github.com/zzxwill/Heat4CloudProviders/blob/master/qingcloud_heat_plugin/template/qingcloud_single_vm_stack.yaml)
-
-
-
-
 
 **第一部分： heat\_template\_version**
 
@@ -48,65 +34,29 @@ The key with value 2013-05-23 indicates that the YAML document is a HOT template
 
 The key with value 2015-04-30 indicates that the YAML document is a HOT template and it may contain features added and\/or removed up until the **Kilo** release. This version adds the repeatfunction. So the complete list of supported functions is:
 
-
-
-
-
 **第二部分： description**
 
 顾名思义。这个YAML是创建虚拟机用的。
-
-
-
-
 
 **第三部分：parameters**
 
 ![](/assets/heat_parameter)
 
-
-
 parameters值传入Heat的参数，创建一个虚拟机时，需要指定创建虚拟机所用到的镜像——image\_id（CentOS 7.0？Ubuntu 14.04?）；需要指定虚拟机创建之后的登录方式——login\_mode（密码登录？SSH Key登录？）
-
-
-
-
 
 **第四部分： resources**
 
 ![](/assets/heat_resources)
 
-
-
 resources部分是template的YAML对应的heat resource type，“server”指resource name, "COM::TwoFellows::Server"指resource type，properties指的是resource type的一系列属性，与template里的parameters相对应。具体对应关系，将在后面讲解。
 
-
-
-
-
 **第五部分： outputs**
-
-
-
-
 
 outputs指的是resource type的输出，其与Heat resource type类里的attribute相对应，具体对应关系，将在后面讲解。
 
 ![](/assets/heat_output)
 
-
-
 截止到现在，HOT基本讲解完毕（第四\/五部分将在后面再加强理解）。同时，OpenStack Heat官方也给出了一个Hello World template，你也可以参考下，[https:\/\/github.com\/openstack\/heat-templates\/blob\/master\/hot\/hello\_world.yaml](https://github.com/openstack/heat-templates/blob/master/hot/hello_world.yaml)。
-
-
-
-
-
-
-
-
-
-
 
 **Heat resource plug-in 开发 —— OpenStack Heat从入门到实践**
 
@@ -166,25 +116,13 @@ resource type的详情如下。
 
 
 
-
-
 **水乳交融的HOT和Resource type Python类 —— OpenStack Heat从入门到实践**
-
-
-
-
 
 HOT的YAML文件：[https:\/\/github.com\/zzxwill\/Heat4CloudProviders\/blob\/master\/qingcloud\_heat\_plugin\/template\/qingcloud\_vm\_stack.yaml](https://github.com/zzxwill/Heat4CloudProviders/blob/master/qingcloud_heat_plugin/template/qingcloud_vm_stack.yaml)
 
 Heat Resource type Python类：[https:\/\/github.com\/zzxwill\/Heat4CloudProviders\/blob\/master\/qingcloud\_heat\_plugin\/resources\/server.py](https://github.com/zzxwill/Heat4CloudProviders/blob/master/qingcloud_heat_plugin/resources/server.py)
 
-
-
-
-
 **1. YAML和Python类是怎么关联起来的？**
-
-
 
 ![](/assets/AF5FD8E1-3470-4D55-BB2F-4281AFC24FC8.png)
 
@@ -194,17 +132,11 @@ Heat Resource type Python类：[https:\/\/github.com\/zzxwill\/Heat4CloudProvide
 
 YAML里定义的resource type是“ COM::TwoFellows::Server”，Python里有如下mapping。
 
-
-
 ![](/assets/CFC05AA6-FB93-4528-9582-6C52DACA8301.png)
 
 即“ COM::TwoFellows::Server” mapping到了QingCloudServer类，而这个类，正好就是server.py。
 
 这样，-f后面YAML就能够指定由那个Python类来执行操作。
-
-
-
-
 
 **2. YAML怎么传值给Python类？**
 
@@ -214,53 +146,31 @@ YAML里定义的resource type是“ COM::TwoFellows::Server”，Python里有如
 
 ![](/assets/362FA089-5A65-48D6-B064-F2D5E6ED5D45.png)
 
-
-
-
-
-
-
 模板里的parameter server\_image\_id的值trustysrvx64e会根据如下定义“get\_param”
-
-
 
 ![](/assets/Image.png)
 
 传递给properties\_schema里的IMAGE\_ID.
 
-
-
 ![](/assets/7374C309-6470-4613-9F47-96F932F16640.png)
 
 IMAGE\_ID表示'image\_id'
-
-
 
 ![](/assets/362FA089-5A65-48D6-B064-F2D5E6ED5D45.png)
 
 然后，通过self.perperties\[\]获取到YAML模板的传值。
 
-
-
 ![](/assets/B6503604-F552-4BDC-B6FC-9DFF69F70279.png)
 
 总结：YAML里的parameters根据get\_param将值传递给resource class的properties。
 
-
-
-
-
-3. Python类是怎么给YAML传值的？
+1. Python类是怎么给YAML传值的？
 
 使用stack-show命令可以查看resource的outputs。
-
-
 
 ![](/assets/354DDC6D-4BF2-46F0-AB1B-304F8AEE74A0.png)
 
 outputs输出那些，是由YAML决定的。
-
-
 
 ![](/assets/3C5FAAFA-D836-42FF-A867-1707027316D7.png)
 
@@ -268,27 +178,63 @@ instance\_id的值是从server的attribute instance\_id获取的。
 
 server是什么？—— resource type COM::TwoFellows::Server的别称。
 
-
-
 ![](/assets/E15491C9-87C5-42A0-9B64-6E44669A6FDE.png)
 
 具体的获取方式，是由QingCloudServer类的方法\_resolve\_attribute决定的。
 
 ![](/assets/AECAF071-CABB-4AD7-BD63-BAF58D278552.png)
 
-
-
 总结：resource type的outputs是由YAML模板决定，根据resource type的\_resolve\_attribute\(\)获取后，通过get\_attr传递给resource type。
-
-
-
-
 
 这样，HOT和Resource type Python类水乳交融的关系就里清了。
 
 
 
 
+
+**2.4.1 ERROR: Request limit exceeded: You have reached the maximum stacks per tenant, 100. —— OpenStack Heat从入门到实践**
+
+默认情况下，创建的stack个数为100，继续创建会出现如下错误。
+
+ERROR: Request limit exceeded: You have reached the maximum stacks per tenant, 100. Please delete some stacks.
+
+
+
+
+
+如果你跟我一样懒，不想一个一个删除，可以增大每个tenant允许的最大stack数目。
+
+1. 增大\/usr\/lib\/python2.7\/site-packages\/heat\/common\/config.py的max\_stacks\_per\_tenant值。
+
+ cfg.IntOpt\('max\_stacks\_per\_tenant',
+
+ default=**100**,
+
+ help=\_\('Maximum number of stacks any one tenant may have'
+
+ ' active at one time.'\)\),
+
+
+
+
+
+有时候，这个各设置不好用，因为有一个更优先级的设置
+
+\/etc\/heat\/heat.conf
+
+![](/assets/708C6CFB-4480-4E26-9E61-47A3CB45B32F.jpg)
+
+
+
+2. 重启heat engine
+
+systemctl restart openstack-heat-engine.service openstack-heat-api.service openstack-heat-api-cfn.service
+
+
+
+
+
+3. 继续运行heat stack-create
 
 
 
