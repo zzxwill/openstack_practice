@@ -21,7 +21,7 @@
             * 1.5.2    Heat
             * 1.5.3    Sahara
             * 1.5.4    Macorni
-* （基础背景篇）OpenStack部署
+* [（基础背景篇）OpenStack部署](（基础背景篇）openstack部署.md)
     * DevStack
         * 配置第一个本地OpenStack开发环境
         * 多节点部署
@@ -30,7 +30,7 @@
     * 通过定制光盘和脚本安装
         * [准备RPM源](deployment/RPM_repos.md)
     * 利用Ansible部署
-* 企业级开发中的第三方Python库
+* [企业级开发中的第三方Python库](企业级开发中的第三方python库.md)
     * [SQLAlchemy](sqlalchemy.md)
     * [Requests](3rd_lib/request.md)
     * [Oslo.conf](osloconf.md)
@@ -50,7 +50,7 @@
     * BillBoard开发
     * Ceph开发
     * Horizon开发
-    * Ceilometer开发
+    * [Ceilometer开发](ceilometer开发.md)
     * [Heat开发](heat开发.md)
 * （高级篇）关系型数据库
     * MySQL
