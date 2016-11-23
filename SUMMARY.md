@@ -52,14 +52,14 @@
     * [Horizon开发](horizon开发.md)
     * [Ceilometer开发](ceilometer开发.md)
     * [Heat开发](development/heat开发.md)
-* （高级篇）关系型数据库
-    * MySQL
-    * Redis
+* [（高级篇）关系型数据库](（高级篇）关系型数据库.md)
+    * [MySQL](5_openstack应用实践与难点/5_1_3_数据库.md)
+    * [Redis](redis.md)
 * （高级篇）网络和存储解决方案
     * 网络布线
     * 网段规划
     * 网络吞吐和时延
-    * 存储设备方案
+    * [存储设备方案](5_openstack应用实践与难点/5_5_存储平台搭建.md)
         * Ceph
         * NAS
         * SAN
@@ -71,7 +71,7 @@
     * 负载均衡
         * 硬件
         * 软件
-        * 数据库
+        * [数据库](5_openstack应用实践与难点/5_1_3_数据库.md)
     * 业务迁移
     * 资源弹性扩展
         * Heat4CloudProviders
