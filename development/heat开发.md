@@ -211,20 +211,9 @@ systemctl restart openstack-heat-engine.service openstack-heat-api.service opens
 
 1. 继续运行heat stack-create
 
-
-
-
-
-
-
-
 安装locate工具
 
 locate命令可以在Linux下非常方便的查找文件。
-
-
-
-
 
 具体的安装可以参考这边文章[http:\/\/www.liquidweb.com\/kb\/how-to-install-mlocate-locate-and-updatedb-commands-on-centos-7\/](http://www.liquidweb.com/kb/how-to-install-mlocate-locate-and-updatedb-commands-on-centos-7/)。
 
@@ -234,8 +223,6 @@ Pre-Flight Check
 
 * These instructions are intended specifically for installing mlocate on CentOS 7.
 * I’ll be working from a Liquid Web Self Managed CentOS 7 server, and I’ll be logged in as root.
-
-
 
 Step 1: Install mlocate
 
@@ -257,15 +244,216 @@ mlocate installs a cron job that will run daily to update search databases at:
 
 \/etc\/cron.daily\/mlocate.cron
 
-
-
-
-
 使用方法：
 
 locate config.py
 
 ![](/assets/EACE8649-E45F-487F-A1F8-7B0A115C2399.png)
+
+
+
+
+
+
+
+
+
+**运行"heat stack-list"，究竟发生了什么？**
+
+
+
+
+
+
+
+[http:\/\/lingxiankong.github.io\/blog\/2014\/05\/07\/heat-service\/](http://lingxiankong.github.io/blog/2014/05/07/heat-service/)
+
+[http:\/\/www.weibo.com\/lingxiankong\/profile?s=6cm7D0\#\_rnd1448267960286](http://www.weibo.com/lingxiankong/profile?s=6cm7D0#_rnd1448267960286)
+
+[https:\/\/tobegit3hub1.gitbooks.io\/ceph\_from\_scratch\/content\/rbd\/rbd\_commands.html](https://tobegit3hub1.gitbooks.io/ceph_from_scratch/content/rbd/rbd_commands.html)
+
+[http:\/\/docs.openstack.org\/cli-reference\/content\/heatclient\_commands.html](http://docs.openstack.org/cli-reference/content/heatclient_commands.html)
+
+```
+usage: heat resource-list [-n <DEPTH>] [--with-detail] <NAME or ID>
+
+```
+
+
+
+
+
+部署Heat Resource Plugin，笔者通常会通过如下任意一个命令重启Heat服务加载plugin。
+
+cd \/etc\/init.d;for i in $\(ls openstack-heat\*\); do service $i restart; done
+
+![](/assets/BD49673B-F6F6-4B17-8C87-201C4C6ABB1F.png)
+
+
+
+
+
+
+
+SERVICES="api api-cfn api-cloudwatch engine"
+
+for i in $SERVICES; do systemctl restart openstack-heat-$i.service; done
+
+for i in $SERVICES; do systemctl status openstack-heat-$i.service; done
+
+![](/assets/260D8869-BE7B-412E-852C-E6113B8C2BC6.png)
+
+
+
+
+
+
+
+
+
+
+
+那么，执行"heat stack-list"这些 Heat Client命令，究竟跟openstack-heat-api、openstack-heat-api-cfn、openstack-heat-api-cloudwatch和openstack-heat-engine这些服务有什么关系？
+
+
+
+
+
+api-cfn和api-cloudwatch是兼容AWS的API，暂且不表。
+
+
+
+
+
+停止openstack-heat-api服务，发现Heat Client命令出现Error。
+
+
+
+
+
+
+
+
+
+那么Heat Client是依赖openstack-heat-api的。具体而言，是什么样的呢？
+
+
+
+
+
+
+
+
+
+Heat Stable Icehouse\heat\api\openstack\v1\\_\_init\_\_.py
+
+\# Stack collection
+
+ stack\_mapper.connect\( _"stack\_index"_,
+
+_"\/stacks"_ ,
+
+ action= _"index"_,
+
+ conditions={ _'method'_: _'GET'_ }\)
+
+
+
+
+
+python-heatclient\heatclient\v1\stacks.py
+
+class **StackManager**\(base.BaseManager\):
+
+ resource\_class = Stack
+
+
+
+
+
+def **list**\(_self_, \*\*kwargs\):
+
+_"""Get a list of stacks._
+
+
+
+
+
+**:param** _limit: maximum number of stacks to return_
+
+**:param** _marker: begin returning stacks that appear later in the stack_
+
+_ list than that represented by this stack id_
+
+**:param** _filters:_ _dict_ _of direct comparison filters that mimics the_
+
+_ structure of a stack object_
+
+**:rtype:** _list of :class:\`Stack\`_
+
+_ """_
+
+def **paginate**\(params\):
+
+_'''Paginate stacks, even if more than API limit.'''_
+
+ current\_limit = int\(params.get\( _'limit'_\) or 0 \)
+
+ url = _'\/stacks?%s'_ % parse.urlencode\(params, True \)
+
+ stacks = _self_.\_list\(url, _'stacks'_\)
+
+for stack in stacks:
+
+yield stack
+
+
+
+
+
+ num\_stacks = len\(stacks\)
+
+ remaining\_limit = current\_limit - num\_stacks
+
+if remaining\_limit &gt; 0 and num\_stacks &gt; 0 :
+
+ params\[ _'limit'_\] = remaining\_limit
+
+ params\[ _'marker'_\] = stack.id
+
+for stack in paginate\(params\):
+
+yield stack
+
+
+
+
+
+ params = {}
+
+if _'filters'_ in kwargs:
+
+ filters = kwargs.pop\( _'filters'_\)
+
+ params.update\(filters\)
+
+
+
+
+
+for key, value in six.iteritems\(kwargs\):
+
+if value:
+
+ params\[key\] = value
+
+
+
+
+
+return paginate\(params\)
+
+
 
 
 
