@@ -40,13 +40,13 @@ login\_passwd= qingcloud\_login\_passwd\)
 
 同时，可以看到一个主机在青云上已经创建好了。
 
+![](/assets/08227716-E923-4CEB-9B92-AE99B342B613.png)
+
 resource type的详情如下。
+
+![](/assets/4A281423-B74B-4DB3-AB51-87FE05CCD14C.png)
 
 我们发现，resource type详情中的perperties和attributes跟上节讲到的HOT十分相关。下篇，我们将讲到这个问题。
 
-更多《OpenStack Heat从入门到实践》系列文章，请关注
 
-1）博客：[http:\/\/www.zhouzhengxi.com\/wordpress\/tag\/Heat\/](http://www.zhouzhengxi.com/wordpress/tag/Heat/)。
-
-2）微信公众账号，Geek2014。
 
