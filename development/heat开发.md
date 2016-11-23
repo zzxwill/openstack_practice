@@ -108,14 +108,6 @@ resource type的详情如下。
 
 我们发现，resource type详情中的perperties和attributes跟上节讲到的HOT十分相关。下篇，我们将讲到这个问题。
 
-
-
-
-
-
-
-
-
 **水乳交融的HOT和Resource type Python类 —— OpenStack Heat从入门到实践**
 
 HOT的YAML文件：[https:\/\/github.com\/zzxwill\/Heat4CloudProviders\/blob\/master\/qingcloud\_heat\_plugin\/template\/qingcloud\_vm\_stack.yaml](https://github.com/zzxwill/Heat4CloudProviders/blob/master/qingcloud_heat_plugin/template/qingcloud_vm_stack.yaml)
@@ -188,34 +180,23 @@ server是什么？—— resource type COM::TwoFellows::Server的别称。
 
 这样，HOT和Resource type Python类水乳交融的关系就里清了。
 
-
-
-
-
 **2.4.1 ERROR: Request limit exceeded: You have reached the maximum stacks per tenant, 100. —— OpenStack Heat从入门到实践**
 
 默认情况下，创建的stack个数为100，继续创建会出现如下错误。
 
 ERROR: Request limit exceeded: You have reached the maximum stacks per tenant, 100. Please delete some stacks.
 
-
-
-
-
 如果你跟我一样懒，不想一个一个删除，可以增大每个tenant允许的最大stack数目。
 
 1. 增大\/usr\/lib\/python2.7\/site-packages\/heat\/common\/config.py的max\_stacks\_per\_tenant值。
 
- cfg.IntOpt\('max\_stacks\_per\_tenant',
+  cfg.IntOpt\('max\_stacks\_per\_tenant',
 
- default=**100**,
+  default=**100**,
 
- help=\_\('Maximum number of stacks any one tenant may have'
+  help=\_\('Maximum number of stacks any one tenant may have'
 
- ' active at one time.'\)\),
-
-
-
+  ' active at one time.'\)\),
 
 
 有时候，这个各设置不好用，因为有一个更优先级的设置
@@ -224,17 +205,67 @@ ERROR: Request limit exceeded: You have reached the maximum stacks per tenant, 1
 
 ![](/assets/708C6CFB-4480-4E26-9E61-47A3CB45B32F.jpg)
 
-
-
-2. 重启heat engine
+1. 重启heat engine
 
 systemctl restart openstack-heat-engine.service openstack-heat-api.service openstack-heat-api-cfn.service
 
+1. 继续运行heat stack-create
 
 
 
 
-3. 继续运行heat stack-create
+
+
+
+
+安装locate工具
+
+locate命令可以在Linux下非常方便的查找文件。
+
+
+
+
+
+具体的安装可以参考这边文章[http:\/\/www.liquidweb.com\/kb\/how-to-install-mlocate-locate-and-updatedb-commands-on-centos-7\/](http://www.liquidweb.com/kb/how-to-install-mlocate-locate-and-updatedb-commands-on-centos-7/)。
+
+One of the best tools for quickly finding files by filename is the **locate** command. The **locate** command reads one or more databases prepared by **updatedb** and writes file names matching at least one of the patterns to standard output, one per line.
+
+Pre-Flight Check
+
+* These instructions are intended specifically for installing mlocate on CentOS 7.
+* I’ll be working from a Liquid Web Self Managed CentOS 7 server, and I’ll be logged in as root.
+
+
+
+Step 1: Install mlocate
+
+As a matter of best practice we’ll update our packages:
+
+`yum -y update`
+
+Then let’s install mlocate and any required packages:
+
+`yum -y install mlocate`
+
+Step 2: Updating mlocate
+
+The following command will update the search databases:
+
+`updatedb`
+
+mlocate installs a cron job that will run daily to update search databases at:
+
+\/etc\/cron.daily\/mlocate.cron
+
+
+
+
+
+使用方法：
+
+locate config.py
+
+![](/assets/EACE8649-E45F-487F-A1F8-7B0A115C2399.png)
 
 
 
