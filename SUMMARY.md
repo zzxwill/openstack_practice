@@ -31,7 +31,7 @@
         * [准备RPM源](deployment/RPM_repos.md)
     * 利用Ansible部署
 * [企业级开发中的第三方Python库](企业级开发中的第三方python库.md)
-    * [SQLAlchemy](sqlalchemy.md)
+    * [SQLAlchemy](3rd_lib/sqlalchemy.md)
     * [Requests](3rd_lib/request.md)
     * [Oslo.conf](osloconf.md)
     * gevent\/greenlet\/eventlet
